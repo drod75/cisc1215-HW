@@ -1,0 +1,36 @@
+1. Discuss the following piece of code. Is it valid? What does it do? What does the variable x
+contain once the code has executed?
+    x = 1
+    x = x + 1
+
+    Yes it is valid, the first line sets a variable x to 1, the second line sets x to 2 by adding one on itself.
+
+2. The Python print() function supports other keyword parameters besides end (which we
+discussed briefly in class). One of these other keyword parameters is sep. What does the sep
+parameter do? Write a brief program that demonstrates its use, and give the output.
+
+    Sep is used to separate items by the specified string value, by default its string 
+    but it can be set to a comma for example. For example:
+
+    print('Big','Deals', sep=', ')
+    output: 'Big, Deals'
+
+3. Write a for loop that uses a string (such as "Hello, world!") for the sequential object
+instead of a range object like we used in the lecture. Answer the following questions:
+    a) What value does the loop index contain at each iteration?
+    b) Why do you think you saw this behavior? What does this say about the structure of string objects?
+
+
+    a)
+    for chr in "Hello, world!":
+        print(chr) #the nth char in the string
+    
+    b)
+    I think this behavior exists because string are meant to be a sort of list of characters, so can behave as such.
+    
+4. Consider the following code:
+    for i in 10:
+     print(i)
+    Does it work? Why or why not?
+
+    This does not work since 10 is an int, 10 is not an iterable like a list.
