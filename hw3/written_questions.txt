@@ -1,0 +1,41 @@
+1. (7 points) Consider the following code:
+    a = Point(5, 5)
+    b = a
+    b = Point(10, 10)
+        a) What is the final value of a? What is the final value of b? Why? (4 points)
+            Point(5,5) is a, Point(10,10) is b
+        b) At which line(s) of code are the values of a and b aliased? (1 point)
+            
+        c) Do a and b cease being aliased before the program ends? If so, where? (2 points)
+
+
+2. (4 points) In class, we briefly discussed the idea that all data values in Python are actually objects.
+With this in mind, consider the following code:
+    a = 5
+    b = a
+    b = 6
+        a) What is the final value of a and b? (2 points)
+            a is 5 and b is 6
+        b) Are a and b aliased at any point in the program’s execution? Where? (2 points)
+
+
+3. (6 points) Consider the following pseudocode depicting interaction with the Python console. The
+pseudocode involves two classes, Professor and Course. The Professor class has one attribute, name,
+which is the professor’s name. The Course class has three attributes: number (the course number),
+title (the course title), and instructor (which should contain a Professor object).
+    >>> prof = Professor(“Alice”)
+    >>> print(prof)
+    Professor name: Alice
+    >>> course = Course(1215, “Programming with Python”, prof)
+    >>> print(course.instructor)
+    Professor name: Alice
+    >>> course.instructor.name = “Bob”
+    >>> print(prof)
+        a) What should the final print() statement output? Why? (3 points)
+            Professor name: Bob, the name in the instructor of the course now refers to bob not alice
+        b) Draw a diagram of the Course object using the same diagram style we used to draw Point and Circle objects in class. (3 points)
+
+
+4. (3 points) Briefly discuss the difference between a class and an instance.
+    A class is the idea of a car, while an instance is a Ford suv 2024 model, the class is a blueprint while an 
+    instance of a class is an actual car that exists outside of concept.
