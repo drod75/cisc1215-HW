@@ -35,7 +35,12 @@ title (the course title), and instructor (which should contain a Professor objec
         a) What should the final print() statement output? Why? (3 points)
             Professor name: Bob, the name in the instructor of the course now refers to bob not alice
         b) Draw a diagram of the Course object using the same diagram style we used to draw Point and Circle objects in class. (3 points)
+            
 
+                 Course                                                         Professor
+                    Number: 1215                            prof ->               Name: 'Alice' then 'Bob'
+       course ->    Title: 'Programming with Python'         
+                    Instructor: prof
 
 4. (3 points) Briefly discuss the difference between a class and an instance.
     A class is the idea of a car, while an instance is a Ford suv 2024 model, the class is a blueprint while an 
