@@ -1,0 +1,23 @@
+1. (5 points) Write a script containing a function that calls itself. The function does not need to accept
+any arguments. What happens when you call this function? Do some research into what you see in the
+error message – what does it mean? Why do you think you got this error?
+- We get an error, the error we got is a recursion error, this means that the function is calling itself infinitely, which is not allowed in Python.
+
+
+2. (5 points) In class, we discussed how integer, floating-point, and string objects are not mutable. What
+does this mean? If integer types are not mutable, then how is it possible to execute sequences of
+statements like those shown below?
+    a = 5
+    a = 10
+- The variable a was at first a reference to 5, when we set it to ten we simply changed the address it is referencing.
+
+
+3. (5 points) Lists are a Python data type that contain sequences of values in a specific order. Consider
+the following code example below that uses lists:
+    my_list = [1, 2, 3]
+    my_list.append(10)
+    print(my_list)
+    Output: [1, 2, 3, 10]
+Based on this example, do you think lists are mutable? Why or why not?
+
+- Yes, lists are mutable because we are manipulating the list by putting the value 10 in it.

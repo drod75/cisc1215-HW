@@ -1,0 +1,4 @@
+def itself():
+    itself()
+
+itself()
