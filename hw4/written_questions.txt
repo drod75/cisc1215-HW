@@ -21,3 +21,36 @@ the following code example below that uses lists:
 Based on this example, do you think lists are mutable? Why or why not?
 
 - Yes, lists are mutable because we are manipulating the list by putting the value 10 in it.
+
+4. (5 points) Consider the following nonsensical decision structure (based on Monty Python skits):
+if c > a:
+ if c > b:
+ print("Spam please!")
+ else:
+ print("It's a late parrot!")
+elif a > b:
+ print("Cheese Shoppe")
+ if b >= c:
+ print("Cheddar")
+ elif a < b:
+ print("Gouda")
+ elif c == b:
+ print("Swiss")
+else:
+ print("Trees")
+ if a == c:
+ print("Chestnut")
+ else:
+ print("Larch")
+print("Done")
+Answer the following questions:
+a) (1 point) What will the script output if a = 1, b = 3, and c = 2?
+"It's a late parrot!"
+b) (1 point) What will the script output if a = 4, b = -1, and c = -1?
+'Cheese Shoppe'
+'Cheddar'
+c) (1 point) What will the script output if a = 5, b = 10, and c = 3?
+    Trees
+    Larch
+d) (2 points) Are any conditions impossible to trigger? Which ones? Why?
+    Gouda, if it activates by a being less than b, after being introducede in a loop where a >b. there is no way that works.
