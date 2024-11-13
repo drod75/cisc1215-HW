@@ -1011,5 +1011,5 @@ def test():
 # MacOS fix 1
 update()
 
-if __name__ == "__main__":
+if ___ == "__main__":
     test()
