@@ -1,6 +1,8 @@
 def process_csv_numeric(data):
     nums = data.split(',')
-    numerics = [float(num) for num in nums]
+    numerics = []
+    for num in nums:
+        numerics.append(float(num))
     return sum(numerics)
 
 print(process_csv_numeric("1,2,3,4,5"))
