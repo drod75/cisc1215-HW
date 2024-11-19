@@ -32,10 +32,15 @@ def load_text():
 def markov_analysis(text):
     # Assume a space means a new word
     words = text.split(" ")
-    words = [word for word in words if word != ' ']
+    words = [word.strip() for word in words if word != ' ']
     
-    n_grams = float(input("How many n-grams would you like to consider? "))
-    n_grams = int(n_grams)
+    n_true = True
+    while n_true:
+        n_grams = input("How many n-grams would you like to consider? ")
+        n_grams = int(n_grams)
+        if n_grams == 1 or n_grams== 2:
+            n_true = False
+
     analysis = {}
     if n_grams == 1:
         for prefix, candidate in zip(words, words[1:]):
@@ -44,12 +49,16 @@ def markov_analysis(text):
 
             analysis[prefix].append(candidate.strip(' '))
     else:
-        n_words = [(words[i], words[i-1]) for i in range(1, len(words))]
-        for prefix, candidate in zip(n_words, words[n_grams:]):
-            if prefix.strip() not in analysis:
-                analysis[prefix.strip()] = []
+        n_words = []
+        for i in range(1,len(words)):
+            if words[i-1] != '' and words[i] != '':
+                n_words.append((words[i-1].strip(' '), words[i].strip(' ')))
 
-            analysis[prefix.strip()].append(candidate.strip(' '))
+        for prefix, candidate in zip(n_words, words[n_grams:]):
+            if prefix not in analysis:
+                analysis[prefix] = []
+
+            analysis[prefix].append(candidate.strip(' '))
 
     return analysis
 
@@ -79,20 +88,17 @@ def generate(analysis):
             time.sleep(0.5)
             print("Please enter a positive integer")
 
+
     # Choose a random prefix
     prefix = random.choice(list(analysis.keys()))
     time.sleep(0.5)
 
-    adjusted_prefix = ''
-    if type(prefix) == tuple:
-        a_prefix = list(prefix)
-        a_prefix[0] = a_prefix[0].title().strip(' ')
-        adjusted_prefix = tuple(a_prefix)
-    else:
-        adjusted_prefix = prefix.title().strip(' ')
-    
     line = []
-    line.append(adjusted_prefix)
+    if type(prefix) == tuple():
+        for x in prefix:
+            line.append(x.strip())
+    else:
+        line.append(prefix)
     # Generate 10 words
     for i in range(amount):
         choice = random.choice(analysis[prefix])
@@ -103,7 +109,7 @@ def generate(analysis):
             line.append(choice)
         prefix = choice
     
-
+    line[0] = line[0].title()
     line[-1] = line[-1] + '.'
     print()
     time.sleep(0.1)
