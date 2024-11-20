@@ -99,9 +99,11 @@ def generate(analysis):
             line.append(x.strip())
     else:
         line.append(prefix)
+
     # Generate 10 words
     for i in range(amount):
-        choice = random.choice(analysis[prefix])
+        options = analysis.get(prefix)
+        choice = random.choice(options)
         if type(choice) == tuple():
             for x in choice:
                 line.append(choice)
