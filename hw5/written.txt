@@ -9,13 +9,13 @@ not possible to slice using the restrictions indicated, answer â€œnot possible.â
         start: 3 
         end: 7
     b) [31, -100], negative start, positive end
-        start: -7
-        end: 8
+        not possible
     c) [14, 49, 31, -100, -200, 369], positive start, negative end
         start: 4
-        end: -0 
+        end: 
     d) [10, 60, 31, -22, 14, 49, 31], negative start, negative end
-        Not Possible
+        start: -10
+        end: -3
 
 
 2. (8 points) Consider the following variables:

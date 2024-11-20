@@ -1,64 +1,39 @@
 def decode_camel_case(variable):
-    snake_case = ""
-    for i in range(len(variable)):
-        if variable[i].isupper():
-            if i > 0:
-                snake_case += " "
-            snake_case += variable[i].lower()
-        else:
-            snake_case += variable[i]
-
-    return snake_case
-
+    split_variable = ""
+    for i, char in enumerate(variable):
+        if i > 0 and char.isupper():
+            split_variable += " "
+        split_variable += char
+    split_variable = split_variable.lower()
+    split_variable = split_variable.title()
+    return split_variable
+    
 
 def encode_camel_case(variable):
-    camel_case = ""
-    capitalize_next = False
-    for i in range(len(variable)):
-        if variable[i] == "_":
-            capitalize_next = True
+    split_variable = variable.split(" ")
+    for i in range(len(split_variable)):
+        if i != 0:
+            split_variable[i] = split_variable[i].title()
         else:
-            if capitalize_next:
-                camel_case += variable[i].lower()
-                capitalize_next = False
-            else:
-                camel_case += variable[i].lower()
+            split_variable[i] = split_variable[i].lower()
 
-    return camel_case
+    return "".join(split_variable)
 
 
 def decode_snake_case(variable):
-    camel_case = ""
-    capitalize_next = False
-    for i in range(len(variable)):
-        if variable[i] == "_":
-            capitalize_next = True
-        else:
-            if capitalize_next:
-                camel_case += variable[i].upper()
-                capitalize_next = False
-            else:
-                camel_case += variable[i]
+    split_variable = variable.split("_")
+    split_variable[0] = split_variable[0].title()
 
-    return camel_case
+    return ' '.join(split_variable)
 
 
 def encode_snake_case(variable):
-    snake_case = ""
-    for i in range(len(variable)):
-        if variable[i].isupper():
-            if i > 0:
-                snake_case += "_"
-            snake_case += variable[i].lower()
-        else:
-            snake_case += variable[i]
+    split_variable = variable.split(" ")
+    split_variable = [x.lower() for x in split_variable]
 
-    return snake_case
+    return "_".join(split_variable)
 
 def convert(variable, style_from, style_to):
-    if (style_from != 'camel' or style_from != 'snake' or style_from != 'none') or (style_to != 'camel' or style_to != 'snake' or style_to != 'none'):
-        print('Error: invalid style')
-    else:
         if style_from == style_to:
             return variable
         elif style_from == 'camel' and style_to == 'snake':
@@ -73,8 +48,13 @@ def convert(variable, style_from, style_to):
             return encode_snake_case(variable)
         elif style_from == 'none' and style_to == 'camel':
             return encode_camel_case(variable)
+        else:
+            return "Error: Invalid style"
 
 
 print(convert("Hello world", "none", "camel"))
+print(convert("helloWorld", "camel", "none"))
 print(convert("helloWorld", "camel", "snake"))
+print(convert("hello_world", "snake", "camel"))
 print(convert("hello_world", "snake", "none"))
+print(convert("Hello world", "none", "snake"))

@@ -102,14 +102,19 @@ def generate(analysis):
 
     # Generate 10 words
     for i in range(amount):
+        print('Prefix:', prefix)
         options = analysis.get(prefix)
-        choice = random.choice(options)
-        if type(choice) == tuple():
-            for x in choice:
+        print('Options:', options, '\n')
+        try:
+            choice = random.choice(options)
+            if type(choice) == tuple():
+                for x in choice:
+                    line.append(choice)
+            else:
                 line.append(choice)
-        else:
-            line.append(choice)
-        prefix = choice
+            prefix = choice
+        except:
+            print("Error generating choice")
     
     line[0] = line[0].title()
     line[-1] = line[-1] + '.'
@@ -125,6 +130,13 @@ def generate(analysis):
     output_file = input("Enter the name of the output file: ")
     with open(output_file, "w") as outfile:
         outfile.write(' '.join(line))
+
+def markov_setup():
+    text = load_text()
+    analysis = markov_analysis(text)
+    stats(analysis)
+    generate(analysis)
+    print('\nThank you for using the Markov Text generator!')
 
 ## Text generation
 text = load_text()
