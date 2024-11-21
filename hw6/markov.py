@@ -36,7 +36,7 @@ def markov_analysis(text):
     
     n_true = True
     while n_true:
-        n_grams = input("How many n-grams would you like to consider? ")
+        n_grams = input("How many n-grams would you like to consider? (1 or 2): ")
         n_grams = int(n_grams)
         if n_grams == 1 or n_grams== 2:
             n_true = False
@@ -94,7 +94,7 @@ def generate(analysis):
     time.sleep(0.5)
 
     line = []
-    if type(prefix) == tuple():
+    if type(prefix) == tuple:
         for x in prefix:
             line.append(x.strip())
     else:
@@ -102,12 +102,15 @@ def generate(analysis):
 
     # Generate 10 words
     for i in range(amount):
-        print('Prefix:', prefix)
+        if type(prefix) != tuple:
+            keys = list(analysis.keys())
+            prefix_keys = [x for x in keys if prefix in list(x)]
+            prefix = random.choice(prefix_keys)
+
         options = analysis.get(prefix)
-        print('Options:', options, '\n')
         try:
             choice = random.choice(options)
-            if type(choice) == tuple():
+            if type(choice) == tuple:
                 for x in choice:
                     line.append(choice)
             else:
@@ -128,6 +131,8 @@ def generate(analysis):
 
     time.sleep(0.5)
     output_file = input("Enter the name of the output file: ")
+    if output_file[-4:] != '.txt':
+        output_file += '.txt'
     with open(output_file, "w") as outfile:
         outfile.write(' '.join(line))
 
