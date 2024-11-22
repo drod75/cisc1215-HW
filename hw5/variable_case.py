@@ -5,7 +5,10 @@ def decode_camel_case(variable):
             split_variable += " "
         split_variable += char
     split_variable = split_variable.lower()
-    split_variable = split_variable.title()
+    to_title = list(split_variable)
+    to_title[0] = to_title[0].upper()
+    title = ''.join(to_title)
+    split_variable = title
     return split_variable
     
 
@@ -13,7 +16,9 @@ def encode_camel_case(variable):
     split_variable = variable.split(" ")
     for i in range(len(split_variable)):
         if i != 0:
-            split_variable[i] = split_variable[i].title()
+            to_title = list(split_variable[i])
+            to_title[0] = to_title[0].upper()
+            split_variable[i] = "".join(to_title)
         else:
             split_variable[i] = split_variable[i].lower()
 
@@ -22,7 +27,9 @@ def encode_camel_case(variable):
 
 def decode_snake_case(variable):
     split_variable = variable.split("_")
-    split_variable[0] = split_variable[0].title()
+    to_title = list(split_variable[0])
+    to_title[0] = to_title[0].upper()
+    split_variable[0] = "".join(to_title)   
 
     return ' '.join(split_variable)
 
