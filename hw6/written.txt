@@ -1,0 +1,32 @@
+1. (2 points) In your own words, explain why we can change the contents of a dictionary contained in a
+tuple, yet still consider the tuple immutable. For example:
+    my_tuple = ({}, 10, 11)
+    my_tuple[0]['hello'] = 'world'
+
+answer: The reference to the dictionary is still the same, so we can still access it and change it as we please.
+
+2. (3 points) In your own words, discuss how the immutability of a tuple allows us to interpret its
+contents in a way we cannot with lists. In other words, why can we say that ("Steve", 123892,
+"123 Fake Street, Brooklyn, NY") is a record of an employee containing their name, ID,
+and address? Why is it a bad idea to make the same assumption about ["Steve", 123892, "123
+Fake Street, Brooklyn, NY"]?
+
+answer: The tuple is immutable, so we can't change the contents of the tuple, but with the list we can change\
+the contents of the list. The tuple is more like a laminated record while the list is more like a piece of paper.
+
+3. (2 points) If tuples are immutable, why can we perform operations like slicing and concatenation
+with them?
+
+answer: We are not modifying the contents of the tuple, but we are creating a new tuple.
+
+4. (8 points) Specify whether a list or dictionary would be better for the following tasks, and why.
+    a) A contacts app allows you to look up your friends’ phone numbers by name.
+    b) Blackboard shows me the names of all students in CISC 1215.
+    c) A weather station records the temperature every hour.
+    d) A government database displays all addresses on 32nd St. in Manhattan.
+
+answer: 
+    For a, a dictionary would be better because it allows us to look up a person's phone number by name.
+    For b, a list would be better because it allows us to look up a student's name.
+    For c, a list would be better because it is in chronological order.
+    For d, a dictionary would be better because it allows us to assign certain keys to certain buildings on the same side.

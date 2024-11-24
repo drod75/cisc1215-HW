@@ -90,7 +90,10 @@ def generate(analysis):
 
 
     # Choose a random prefix
-    prefix = random.choice(list(analysis.keys()))
+    og_prefix = random.choice(list(analysis.keys()))
+    prefix = og_prefix
+    time.sleep(0.5)
+    print(f'Generating {amount} words with prefix {prefix}')
     time.sleep(0.5)
 
     line = []
@@ -100,24 +103,26 @@ def generate(analysis):
     else:
         line.append(prefix)
 
-    # Generate 10 words
-    for i in range(amount):
-        if type(prefix) != tuple:
-            keys = list(analysis.keys())
-            prefix_keys = [x for x in keys if prefix in list(x)]
-            prefix = random.choice(prefix_keys)
+    options = analysis.get(prefix)
+    choice = random.choice(options)
+    line.append(choice.strip())
+    prefix = choice
 
-        options = analysis.get(prefix)
-        try:
+    # Generate 10 words
+    for i in range(amount - 2):
+        choice = ''
+        if type(og_prefix) == tuple:
+            keys = list(analysis.keys())
+            prefix_keys = [x for x in keys if prefix in x]
+            p_key = random.choice(prefix_keys)
+            options = analysis.get(p_key)
             choice = random.choice(options)
-            if type(choice) == tuple:
-                for x in choice:
-                    line.append(choice)
-            else:
-                line.append(choice)
-            prefix = choice
-        except:
-            print("Error generating choice")
+            line.append(choice)
+        else:
+            options = analysis.get(prefix)
+            choice = random.choice(options)
+            line.append(choice)
+        prefix = choice
     
     line[0] = line[0].title()
     line[-1] = line[-1] + '.'
@@ -126,6 +131,7 @@ def generate(analysis):
     for l in line:
         time.sleep(0.1)
         print(l, end=' ')
+        time.sleep(0.1)
     print(' ')
     print()
 
@@ -144,7 +150,17 @@ def markov_setup():
     print('\nThank you for using the Markov Text generator!')
 
 ## Text generation
-text = load_text()
-analysis = markov_analysis(text)
-stats(analysis)
-generate(analysis)
+markov_setup()
+
+
+''' Anwsers to questions from part 1 and 2:
+When there is only one n-gram:
+    1. Average prefix associations: 10.59
+    2. Total prefixes: 7092
+
+When there are two n-grams:
+    1. Average prefix associations: 1.79
+    2. Total prefixes: 41922
+    3. Does the text seem better or worse than with one gram: worse
+
+'''
