@@ -153,7 +153,18 @@ def markov_setup():
 markov_setup()
 
 
-''' Anwsers to questions from part 1 and 2:
+''' 
+Answers to questions from part 1, 2, and 4:
+
+Part 1:
+    1. Average prefix associations: 6.760061222652381
+    2. Total prefixes: 11107
+
+Part 2:
+    1. Average prefix associations: 10.59
+    2. Total prefixes: 7092
+
+Part 4:
 When there is only one n-gram:
     1. Average prefix associations: 10.59
     2. Total prefixes: 7092
@@ -162,5 +173,4 @@ When there are two n-grams:
     1. Average prefix associations: 1.79
     2. Total prefixes: 41922
     3. Does the text seem better or worse than with one gram: worse
-
 '''
